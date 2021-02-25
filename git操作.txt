@@ -1,0 +1,79 @@
+一、初始化本地仓库
+进入创建好的文件夹作为git的本地仓库，执行git init 进行初始化操作，会生成一个.git隐藏文件夹。
+git init
+
+二、git常用命令
+
+add和commit(xxx代表文件)
+
+	进行提交至暂存区
+	git add "xxx"  
+
+	然后提交至本地仓库
+	git commit -m "描述信息" "xxx"
+
+status
+	查看文件的提交的状态(如：文件提交暂存区，使用该命令可查看到)
+	git status
+
+log
+	查看提交日志
+	git log
+	当历史记录过多，查看日志时有换页效果
+	下一页 空格
+	上一页 B
+	退出    Q
+	1:git log
+	2:git log --pretty=oneline(精简只留下索引与描述信息)	
+	3:git log --oneline(只像是日志索引前七个与描述信息)
+	4:git reflog (多了@{数字} 数字含义:指正回退指定版本需要几步)
+reset
+	前进或者后退历史版本
+	git reset --hard  索引
+	
+	1.hard参数:
+	git reset --hard [索引](本地库的指针移动的同时，暂存区与工作去，也会重置)
+	2.mixed参数:
+	git reset --mixed [索引](本地库的指针移动的同时，重置暂存区，工作区不受影响)
+	3.soft参数:
+	git reset --soft[索引](本地库的指针移动的时候，暂存区与工作区均不受影响)
+        
+      常用的参数是hard	
+diff     
+	单文件内容对比
+	git diff [文件名]  (对比工作区与暂存区中的内容  按行来)
+	多文件对比
+	git diff (对比工作区与暂存区所有的文件内容)
+branch    查看分支
+	git branch -v
+	创建分支
+	git branch  分支名
+checkout
+	切换分支
+	git checkout 分支名
+merge  	合并分支
+	git merge fenzhi00
+
+
+远程仓库相关
+
+	起别名
+	git remote add 别名  远程仓库https地址
+	查看别名
+	git remote -v 
+推送
+	git push 地址  分支名
+
+拉取操作
+	pull
+	git pull 
+
+SSH免密登陆github
+	在本地进行密钥生成
+	ssh  ssh-keygen -t rsa -C 这里是填写你注册github时的邮箱地址
+	然后回车三次 生成文件
+	文件在本地用户根目录下一个 .ssh文件夹中
+	进入.ssh文件夹内找到id_rsa.pub文件并打开 复制里面的内容
+	然后登陆github点击头像下---->settings---->SSH and GPG keys---->NewSSHkey(填写title,key中粘贴id_rsa.pub内复制的内容即可生成)
+	
+	
